@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Página Web</title>
+  <link rel="stylesheet" href="Estilos.css">
+  
+</head>
+<!-- Contenido visible de la página -->
+<body>
+
+    <!-- Cabecera principal con título -->
+    <header>
+      <h1>Bienvenido a mi página</h1> <!-- Encabezado de nivel 1 -->
+    </header>
+  
+    <!-- Menú de navegación con enlaces -->
+    <nav>
+      <!-- Evento onclick llama a función JS para cambiar de sección -->
+      <a onclick="mostrarSeccion('inicio')">Inicio</a>
+      <a onclick="mostrarSeccion('sobreMi')">Sobre mí</a>
+      <a onclick="mostrarSeccion('contacto')">Contacto</a>
+    </nav>
+  
+    <!-- Contenedor principal -->
+    <main>
+  
+      <!-- Sección de inicio (visible por defecto) -->
+      <section id="inicio" class="active">
+        <h2>Inicio</h2> <!-- Encabezado de nivel 2 -->
+        <p>Bienvenido a mi sitio web. Aquí podrás conocer más sobre mí y cómo contactarme.</p> <!-- Párrafo -->
+        <p>En la barra lateral derecha tendrás acceso directo a mis redes sociales. </p> <!-- Párrafo -->
+      </section>
+  
+      <!-- Sección sobre mí -->
+      <section id="sobreMi">
+        <h2>Sobre mí</h2>
+        <p>Hola, soy Isaí y tengo 20 años de edad, nací el 04 marzo de 2005. </p>        
+        <p>Estoy aprendiendo a desarrollar páginas web, siendo está mi primer página.</p>
+        <p>Tengo muchos gusto, entre ellos: la tecnología, aprender sobre sus funciones y ejecución,</p>
+        <p>La naturaleza, los animales, siendo los perros mis preferidos; me gusta aprender</p>
+        <P>y así aumentar mis conocimientos, también jugar futbol, aunque ya casi no lo he hecho.</P>
+      </section>
+  
+      <!-- Sección de contacto con formulario -->
+      <section id="contacto">
+        <h2>Formulario de Contacto</h2>
+  
+        <!-- Formulario que ejecuta una función al enviar -->
+        <form onsubmit="enviarFormulario(event)">
+          <!-- Etiquetas para los campos -->
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" required> <!-- Campo de texto -->
+  
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" required> <!-- Campo tipo email -->
+  
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" rows="4" required></textarea> <!-- Área de texto -->
+  
+          <button type="submit">Enviar</button> <!-- Botón para enviar -->
+        </form>
+  
+        <!-- Mensaje de confirmación (aparece con JS) -->
+        <p id="mensajeEnviado" style="color: rgb(0, 13, 128);"></p>
+      </section>
+
+  
+      <!-- Barra lateral con enlaces a redes sociales -->
+      <aside>
+        <h3>Otras Informaciones</h3> <!-- Encabezado de nivel 3 -->
+        <p>Puedes encontrar más sobre mí en las siguientes redes sociales:</p>
+        <ul> <!-- Lista no ordenada -->
+          <li><a href="https://www.facebook.com/share/1AHyLcJKsN/" target="_blank">📘 Facebook</a></li>
+          <li><a href="https://www.instagram.com/isaijordan44?igsh=dXdobHZudDB0NGRm" target="_blank">📸 Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@aije48?_t=ZM-8vmHgTt4kNz&_r=1" target="_blank">🎵 TikTok</a></li>
+        </ul>
+      </aside>
+    </main>
+  
+    <!-- Pie de página -->
+    <footer>
+      <p> &copy; 2025 Mi Página Web </p> <!-- Símbolo de copyright -->
+    </footer>
+  
+    <!-- Script en JavaScript para funcionalidad -->
+    <script>
+      // Función para mostrar una sección específica
+      function mostrarSeccion(id) {
+        const secciones = document.querySelectorAll('section'); // Todas las secciones
+        secciones.forEach(sec => sec.classList.remove('active')); // Oculta todas
+        const activa = document.getElementById(id); // Busca la que queremos mostrar
+        if (activa) activa.classList.add('active'); // La hace visible
+      }
+  
+      // Función para manejar envío del formulario
+      function enviarFormulario(event) {
+        event.preventDefault(); // Previene el recargo de página
+        const nombre = document.getElementById('nombre').value;
+        document.getElementById('mensajeEnviado').innerText = `Gracias, ${nombre}. Tu mensaje ha sido enviado.`;
+      }
+    </script>
+  
+  </body>
+  </html>
